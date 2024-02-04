@@ -1,15 +1,16 @@
 {
-  "name": "m-shatylo-soccer",
+  "name": "c-muller-my-favorite-meals",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
+    "generatecomponent": "ng generate component",
+    "generatepipe": "ng generate pipe",
+    "generatedirective": "ng generate directive",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generatecomponent": "ng generate component",
-    "generatepipe": "ng generate pipe",
-    "generatedirective": "ng generate directive"
+    "serve:ssr: C_Muller_MyFavoriteMeals": "node dist/c-muller-my-favorite-meals/server/server.mjs"
   },
   "private": true,
   "dependencies": {
