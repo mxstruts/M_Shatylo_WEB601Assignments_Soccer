@@ -11,5 +11,5 @@ import { ContentListComponent } from './content-list/content-list.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'C_Muller_MyFavoriteMeals';
+  title = 'MShatylo APP';
 }

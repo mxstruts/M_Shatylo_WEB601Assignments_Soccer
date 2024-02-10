@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { Content } from '../helper-files/content-interface';
 import {ContentCardComponent} from '../content-card/content-card.component';
 import { RouterOutlet } from '@angular/router';
+import { PlayersFilterPipe } from '../players-filter.pipe';
+import { FormsModule } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-content-list',
   standalone: true,
-  imports: [CommonModule, ContentCardComponent, RouterOutlet],
+  imports: [CommonModule, ContentCardComponent, RouterOutlet, PlayersFilterPipe, FormsModule],
   templateUrl: './content-list.component.html',
   styleUrl: './content-list.component.scss'
 })
@@ -67,8 +71,30 @@ export class ContentListComponent {
       imgURL: 'https://images2.minutemediacdn.com/image/upload/c_crop,w_1024,h_682,x_0,y_0/c_fill,w_720,ar_3:2,f_auto,q_auto,g_auto/images%2FGettyImages%2Fmmsport%2F90min_en_international_web%2F01hjrpw91cjdhbqnhta5.jpg',
       tags: ['Soccer ', 'Winner ', 'Top'],
     },
+    {
+      id: 7, 
+      title: 'Lionel Messi ',
+      description: 'If Kevin De Bruyne had played a single full game of football at the start of the 2023/24 season, hed be much higher on this list',
+      creator: 'Maksym',
+      type: 'Inter Miami',
+      imgURL: 'https://media.cnn.com/api/v1/images/stellar/prod/231022080203-01-messi-inter-miami-1021-restricted.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp',
+      tags: ['Soccer ', 'Winner ', 'Top'],
+    },
 
   ]
+  contentFilter: Content[] = [];
+  title: string = '';
+  message: string = '';
+  isFound: boolean = false;
+
+  titleCheck(){
+    this.contentFilter = this.contentArray.filter(contentItem => contentItem.title.toLowerCase() === this.title.toLowerCase());
+
+    this.isFound = this.contentFilter.length > 0;
+
+    this.message = this.isFound ? `Player with title '${this.title}' was found.` : `Player with title '${this.title}' was not found.`;
+  }
+
 
   constructor() {
      
