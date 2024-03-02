@@ -1,12 +1,15 @@
-<div class="inputButton">
+<div class="input">
   <input type="text" name="title" [(ngModel)]="title" />
-  <button (click)="titleCheck()">Submit</button>
+  <button (click)="checkTitle()">Submit</button>
 </div>
 
 <p class="message" [style.color]="isFound ? 'green' : 'red'">
   {{ message }}
 </p>
 
+<app-create-content
+  (contentAdded)="handleContentSubmission($event)"
+></app-create-content>
 <div class="content-list">
   <div class="completePlayers">
     <app-content-card

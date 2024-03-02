@@ -5,15 +5,16 @@ import {ContentCardComponent} from '../content-card/content-card.component';
 import { RouterOutlet } from '@angular/router';
 import { PlayersFilterPipe } from '../players-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { CreateContentComponent } from '../create-content/create-content.component';
 
 
 
 @Component({
   selector: 'app-content-list',
   standalone: true,
-  imports: [CommonModule, ContentCardComponent, RouterOutlet, PlayersFilterPipe, FormsModule],
+  imports: [CommonModule, ContentCardComponent, RouterOutlet, PlayersFilterPipe, FormsModule,CreateContentComponent],
   templateUrl: './content-list.component.html',
-  styleUrl: './content-list.component.scss'
+  styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent {
   contentArray: Content[] = [
@@ -87,13 +88,23 @@ export class ContentListComponent {
   message: string = '';
   isFound: boolean = false;
 
-  titleCheck(){
+  checkTitle(){
     this.contentFilter = this.contentArray.filter(contentItem => contentItem.title.toLowerCase() === this.title.toLowerCase());
 
     this.isFound = this.contentFilter.length > 0;
 
     this.message = this.isFound ? `Player with title '${this.title}' was found.` : `Player with title '${this.title}' was not found.`;
   }
+
+  
+    handleContentSubmission(newContent: Content) {
+      newContent.id = Number(newContent.id);
+      
+      this.contentArray = [...this.contentArray, newContent];
+  
+      console.log(this.contentArray)
+      console.log("Success! New content added: ", newContent.title)
+    }
 
 
   constructor() {
