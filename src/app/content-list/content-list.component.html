@@ -1,49 +1,39 @@
-<div class="input">
-  <input type="text" name="title" [(ngModel)]="title" />
-  <button (click)="checkTitle()">Submit</button>
+<app-modify-content-component class="addContent" (contentAdded)="onContentAdded($event)"></app-modify-content-component>
+
+<div class="inputButton">
+  <input type="text" name="title" [(ngModel)]="title">
+  <button (click)="titleCheck()">Submit</button>
 </div>
 
 <p class="message" [style.color]="isFound ? 'green' : 'red'">
   {{ message }}
 </p>
 
-<app-create-content
-  (contentAdded)="handleContentSubmission($event)"
-></app-create-content>
+<app-create-content (contentAdded)="handleContentSubmission($event)"></app-create-content>
 <div class="content-list">
   <div class="completePlayers">
-    <app-content-card
-      *ngFor="let contentItem of contentArray | playersFilter : 'PSG'"
-      [content]="contentItem"
-    ></app-content-card>
+    <app-content-card *ngFor="let contentItem of contentArray | playersFilter : 'PSG'"
+      [content]="contentItem"></app-content-card>
   </div>
 
   <div class="players">
-    <app-content-card
-      *ngFor="let contentItem of contentArray | playersFilter : 'Man City'"
-      [content]="contentItem"
-    ></app-content-card>
+    <app-content-card *ngFor="let contentItem of contentArray | playersFilter : 'Man City'"
+      [content]="contentItem"></app-content-card>
   </div>
 
   <div class="players">
-    <app-content-card
-      *ngFor="let contentItem of contentArray | playersFilter : 'Real Madrid'"
-      [content]="contentItem"
-    ></app-content-card>
+    <app-content-card *ngFor="let contentItem of contentArray | playersFilter : 'Real Madrid'"
+      [content]="contentItem"></app-content-card>
   </div>
 
   <div class="players">
-    <app-content-card
-      *ngFor="let contentItem of contentArray | playersFilter : 'Bayern'"
-      [content]="contentItem"
-    ></app-content-card>
+    <app-content-card *ngFor="let contentItem of contentArray | playersFilter : 'Bayern'"
+      [content]="contentItem"></app-content-card>
   </div>
 
   <div class="noTypes">
     <h3>No Types</h3>
-    <app-content-card
-      *ngFor="let contentItem of contentArray | playersFilter : ''"
-      [content]="contentItem"
-    ></app-content-card>
+    <app-content-card *ngFor="let contentItem of contentArray | playersFilter : ''"
+      [content]="contentItem"></app-content-card>
   </div>
 </div>
